@@ -1,4 +1,6 @@
 class Response < ActiveRecord::Base
+  validates :answer_choice_id, :respondent_id, presence: true
+  
   belongs_to(
     :answer_choice,
     class_name: "AnswerChoice",
@@ -10,6 +12,6 @@ class Response < ActiveRecord::Base
     :respondent,
     class_name: "User",
     primary_key: :id,
-    foreign_key: :respondent_id 
+    foreign_key: :respondent_id
   )
 end

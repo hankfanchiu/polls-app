@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  validates :text, :poll_id, presence: true 
+
   has_many(
     :answer_choices,
     class_name: "AnswerChoice",
