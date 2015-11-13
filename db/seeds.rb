@@ -81,14 +81,8 @@ ActiveRecord::Base.transaction do
   Response.create!(id: 14, respondent_id: 2, answer_choice_id: 22)
   Response.create!(id: 15, respondent_id: 2, answer_choice_id: 27)
   Response.create!(id: 16, respondent_id: 2, answer_choice_id: 32)
-  Response.create!(id: 17, respondent_id: 3, answer_choice_id: 3)
-  Response.create!(id: 18, respondent_id: 3, answer_choice_id: 4)
-  Response.create!(id: 19, respondent_id: 3, answer_choice_id: 8)
   Response.create!(id: 20, respondent_id: 3, answer_choice_id: 13)
   Response.create!(id: 21, respondent_id: 3, answer_choice_id: 15)
-  Response.create!(id: 22, respondent_id: 3, answer_choice_id: 25)
-  Response.create!(id: 23, respondent_id: 3, answer_choice_id: 29)
-  Response.create!(id: 24, respondent_id: 3, answer_choice_id: 30)
   Response.create!(id: 25, respondent_id: 4, answer_choice_id: 2)
   Response.create!(id: 26, respondent_id: 4, answer_choice_id: 4)
   Response.create!(id: 27, respondent_id: 4, answer_choice_id: 8)
@@ -132,12 +126,8 @@ ActiveRecord::Base.transaction do
   Response.create!(id: 65, respondent_id: 9, answer_choice_id: 3)
   Response.create!(id: 66, respondent_id: 9, answer_choice_id: 7)
   Response.create!(id: 67, respondent_id: 9, answer_choice_id: 9)
-  Response.create!(id: 68, respondent_id: 9, answer_choice_id: 11)
-  Response.create!(id: 69, respondent_id: 9, answer_choice_id: 19)
   Response.create!(id: 70, respondent_id: 9, answer_choice_id: 25)
   Response.create!(id: 71, respondent_id: 9, answer_choice_id: 29)
   Response.create!(id: 72, respondent_id: 9, answer_choice_id: 31)
-
-
 
 end
