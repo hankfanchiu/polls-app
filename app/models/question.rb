@@ -54,7 +54,7 @@ class Question < ActiveRecord::Base
     results
   end
 
-  def best_results
+  def results
     results = {}
 
     grouped_responses = self
