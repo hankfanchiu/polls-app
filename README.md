@@ -5,7 +5,7 @@ A polling Rails project for learning ActiveRecord, query methods, models, and mi
 ## Schema
 
 - An author (user) owns a poll.
-- A poll contains a question.
+- A poll contains many questions.
 - Each question has many answer choices.
 - Other users submit responses to the question by selecting one of the available answer choices.
 
