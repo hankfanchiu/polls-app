@@ -9,5 +9,5 @@ class Poll < ActiveRecord::Base
   has_many :questions,
     class_name: "Question",
     primary_key: :id,
-    foreign_key: :question_id
+    foreign_key: :poll_id
 end
