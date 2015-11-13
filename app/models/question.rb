@@ -33,23 +33,20 @@ class Question < ActiveRecord::Base
   end
 
   def sql_results
-    answers = self.class.find_by_sql([<<-SQL, id])
+    results = {}
+
+    answers = self.class.find_by_sql([<<-SQL, id: self.id])
       SELECT
         answer_choices.*,
-        COUNT(*) AS counts
-      FROM
-        answer_choices
-      JOIN
-        responses ON responses.answer_choice_id = answer_choices.id
-      WHERE
-        answer_choices.question_id = ?
-      GROUP BY
-        answer_choices.id
+        COUNT(*) AS count
+      FROM answer_choices
+      JOIN responses ON responses.answer_choice_id = answer_choices.id
+      WHERE answer_choices.question_id = :id
+      GROUP BY answer_choices.id
     SQL
 
-    results = {}
     answers.each do |answer|
-      results[answer.text] = answer.counts
+      results[answer.text] = answer.count
     end
     results
   end
@@ -59,10 +56,10 @@ class Question < ActiveRecord::Base
 
     grouped_responses = self
       .answer_choices
-      .select("answer_choices.text, COUNT(*) AS count")
+      .select('answer_choices.text, COUNT(*) AS count')
       .joins(:responses)
-      .where("answer_choices.question_id = ?", self.id)
-      .group("answer_choices.id")
+      .where('answer_choices.question_id = ?', self.id)
+      .group('answer_choices.id')
 
     grouped_responses.each do |answer_choice|
       results[answer_choice.text] = answer_choice.count
