@@ -55,6 +55,19 @@ class Question < ActiveRecord::Base
   end
 
   def best_results
+    results = {}
 
+    grouped_responses = self
+      .answer_choices
+      .select("answer_choices.text, COUNT(*) AS count")
+      .joins(:responses)
+      .where("answer_choices.question_id = ?", self.id)
+      .group("answer_choices.id")
+
+    grouped_responses.each do |answer_choice|
+      results[answer_choice.text] = answer_choice.count
+    end
+
+    results
   end
 end
