@@ -1,8 +1,8 @@
 class Response < ActiveRecord::Base
   validates :answer_choice_id, :respondent_id, presence: true
 
-  validate :respondent_has_not_already_answered_question
-  validate :author_cannot_respond
+  # validate :respondent_has_not_already_answered_question
+  validate :question_author_cannot_respond
 
   belongs_to :answer_choice,
     class_name: "AnswerChoice",
@@ -43,8 +43,15 @@ class Response < ActiveRecord::Base
     end
   end
 
-  def author_cannot_respond
-    author_id = self.question.poll.author.id
+  def question_author_cannot_respond
+    response_poll = Poll
+      .joins('JOIN questions ON questions.poll_id = polls.id')
+      .joins('JOIN answer_choices ON answer_choices.question_id = questions.id')
+      .joins('JOIN responses ON responses.answer_choice_id = answer_choices.id')
+      .where('answer_choices.id = ?', self.answer_choice_id)
+
+    author_id = response_poll.pluck('polls.author_id').first
+
     if author_id == self.respondent_id
       errors[:author] << "cannot respond to own question"
     end
