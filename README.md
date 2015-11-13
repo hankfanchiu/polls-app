@@ -2,7 +2,7 @@
 
 A polling Rails project for learning ActiveRecord, query methods, models, and migrations.
 
-# Schema
+## Schema
 
 - An author (user) owns a poll.
 - A poll contains a question.
@@ -14,6 +14,6 @@ A polling Rails project for learning ActiveRecord, query methods, models, and mi
 - A user cannot create multiple responses to the same question.
 - An author of a question cannot create a response to his/her own question.
 
-# Seeding
+## Seeding
 
 Sample data available in the [seed](/db/seeds.rb) file.
